@@ -1,13 +1,15 @@
 import * as path from "node:path";
+import * as fs from "node:fs/promises";
 import { exit } from "node:process";
 
-export const jsonParser = (file) => {
+export const jsonParser = async (file) => {
   const extension = path.extname(file);
   if (extension !== ".json") {
     console.log("This file is not a json file");
     exit(1);
   }
-  exit(0);
+
+  const contents = await fs.readFile(file, { encoding: "utf-8" });
 };
 
-jsonParser("testfile");
+jsonParser("testfile.json");
