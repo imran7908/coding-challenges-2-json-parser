@@ -1,33 +1,20 @@
 import { numberPattern, stringPattern } from "./patterns.js";
 
 const isString = (value) => {
-  if (stringPattern.test(value)) {
-    console.log("it is string");
-  } else {
-    console.log("Not string");
-  }
+  return stringPattern.test(value) ? true : false;
 };
 
 const isNumber = (value) => {
-  if (numberPattern.test(value)) {
-    console.log("it is number");
-  } else {
-    console.log("Not number");
-  }
+  return numberPattern.test(value) ? true : false;
 };
 
-export const isValidValue = (value) => {
-  if (
-    value === null ||
-    value === true ||
-    value === false ||
-    value === number ||
-    value === string
-  ) {
-    return true;
-  }
+export const isSNNTF = (value) => {
+  const res =
+    isString(value) |
+    isNumber(value) |
+    (value === true) |
+    (value === false) |
+    (value === null);
 
-  return false;
+  return res;
 };
-
-isNumber(434);
